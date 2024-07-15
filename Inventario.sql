@@ -109,3 +109,16 @@ CREATE TABLE Movimientos_Inventario (
     FOREIGN KEY (responsable_id) REFERENCES Empleados(empleado_id),
     FOREIGN KEY (sector_destino_id) REFERENCES Sectores(sector_id)
 );
+
+-- registra todas las modificaciones realizadas a los productos en la tabla Productos.
+
+CREATE TABLE Auditoria_Productos (
+    auditoria_id INT AUTO_INCREMENT PRIMARY KEY,
+    producto_id INT NOT NULL,
+    campo_modificado VARCHAR(100) NOT NULL,
+    valor_anterior VARCHAR(250),
+    valor_nuevo VARCHAR(250),
+    fecha_modificacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    usuario_modificacion VARCHAR(100) NOT NULL,
+    FOREIGN KEY (producto_id) REFERENCES Productos(producto_id)
+);
