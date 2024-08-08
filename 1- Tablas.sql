@@ -1,4 +1,3 @@
-Create schema Inventario;
 use Inventario;
 
 -- Representa las unidades organizativas más grandes dentro del hospital, que pueden contener varios sectores.
