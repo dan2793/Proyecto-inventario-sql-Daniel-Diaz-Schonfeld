@@ -18,9 +18,6 @@ SELECT p.producto_id, p.nombre AS producto, c.nombre_categoria AS categoria, p.c
 FROM Productos p
 JOIN Categorias c ON p.categoria_id = c.categoria_id;
 
--- Creacion de esquema Usuarios
-create schema Usuarios;
-
 -- Vistas en el esquema usuarios
 use Usuarios;
 
