@@ -121,3 +121,15 @@ CREATE TABLE Auditoria_Productos (
     usuario_modificacion VARCHAR(100) NOT NULL,
     FOREIGN KEY (producto_id) REFERENCES Productos(producto_id)
 );
+
+use usuarios;
+
+-- Crear la tabla users para almacenar información de usuarios
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    empleado_id INT NOT NULL,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('Admin', 'Operativo') NOT NULL,
+    FOREIGN KEY (empleado_id) REFERENCES Inventario.Empleados(empleado_id)
+);
