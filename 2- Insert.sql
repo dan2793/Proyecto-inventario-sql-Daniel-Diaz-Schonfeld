@@ -110,3 +110,17 @@ VALUES
 (8, 'Ajuste', 2, '2023-06-22 17:00:00', 8, 4),
 (9, 'Entrada', 6, '2023-06-23 18:00:00', 9, 5),
 (10, 'Salida', 8, '2023-06-24 19:00:00', 10, 5);
+
+USE Usuarios;
+
+-- Insertar usuarios basados en el sector
+INSERT INTO users (empleado_id, username, password, role)
+SELECT e.empleado_id, 
+       LOWER(CONCAT(e.nombre, '.', e.apellido)) AS username, 
+       CONCAT('password_', e.empleado_id) AS password, 
+       CASE
+           WHEN s.nombre_sector = 'Informatica' THEN 'Admin'
+           ELSE 'Operativo'
+       END AS role
+FROM Inventario.Empleados e
+JOIN Inventario.Sectores s ON e.sector_id = s.sector_id;
